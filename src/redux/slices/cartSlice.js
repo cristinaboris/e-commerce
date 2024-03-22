@@ -1,20 +1,38 @@
 import { createSlice } from '@reduxjs/toolkit'
+import { fetchShop } from '../CartAction'
 
 const initialState = {
   cartItem: [],
-  totalAmount: 0,
-  totalQuanity: 0
+  loading: 'idle'
 }
 
 export const cartSlice = createSlice({
   name: 'cart',
   initialState,
   reducers: {
-   setCloth(state, action){
+   setShopItem(state, action){
     state.cartItem = action.payload
    }
-
     },
+    extraReducers: builder => {
+      builder
+        .addCase(fetchShop.pending, (state) => {
+          if (state.loading === 'idle') {
+            state.loading = 'pending'
+          }
+        })
+        .addCase(fetchShop.fulfilled, (state, action) => {
+          if (state.loading === 'pending') {
+            state.loading = 'idle'
+            state.cartItem = action.payload
+          }
+        })
+        .addCase(fetchShop.rejected, (state, action) => {
+          if (state.loading === 'pending') {
+            state.loading = 'idle'
+            state.error = action.payload
+          }})}
+        
 })
 
 
@@ -23,10 +41,3 @@ export const { setCloth } = cartSlice.actions
 export default cartSlice.reducer
 
 
-export const fetchCloth  = () => {
-    return async function fetchClothThunk(dispatch){
-   const response = await fetch('https://fakestoreapi.com/products')
-   const cloth = await response.json();
-   dispatch(setCloth(cloth))
-    }
-}

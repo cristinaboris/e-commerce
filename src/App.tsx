@@ -4,7 +4,7 @@ import Banner from './components/Banner'
 import Category from './components/Category'
 import './App.css'
 import CategorySecond from './components/CategorySecond'
-
+import Brand from './components/Brand'
 
 
 function App() {
@@ -13,7 +13,8 @@ function App() {
     <>
     <Banner/>
     <Category/>
-    <CategorySecond/>
+   <Brand/>
+   
     </>
   )
 }

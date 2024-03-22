@@ -6,7 +6,7 @@ import img3 from '../assets/img3.png'
 const Category = () => {
   return (
     <div className='md:flex justify-center w-full h-full mt-7  gap-3 '>
-        <div className="w-[652px] h-[790px] relative">
+        <div className="max-w-[652px] h-[790px] relative">
            <div className="absolute top-8 left-8">
            <h2 className='text-lg leading-5 font-bold'>Coats</h2>
            <h2 className='w-[50px] border-b-2 border-black hover:border-white'>Explore</h2>
