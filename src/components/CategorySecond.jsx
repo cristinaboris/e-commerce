@@ -1,26 +1,25 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
-import {fetchCloth} from '../redux/slices/cartSlice'
+import { fetchShop } from '../redux/CartAction';
 
 
 const CategorySecond = () => {
 
 const dispatch = useDispatch()
 
-const cartItems = useSelector((state) => state.cart.cartItem)
+//const shopItem = useSelector(state => state.cart.cartItem)
+
+//console.log(shopItem)
+
     useEffect(() =>{
-        dispatch(fetchCloth())
-      },[])
+       dispatch(fetchShop())
+      },[dispatch])
 
       
 
   return (
     <div>
-      {
-        cartItem.map((item) => {
-            {item.id}
-        })
-      }
+      
     </div>
   )
 }
